@@ -26,7 +26,9 @@ Boolean lockInitialised = FALSE;
 
 #if defined(__linux__)
 #include <sys/ioctl.h>
-#include <linux/serial.h>
+#if !defined(__ANDROID__)
+# include <linux/serial.h>
+#endif
 #endif
 
 int ToBaudConstant(int baudRate);
