@@ -30,6 +30,10 @@ Boolean lockInitialised = FALSE;
 # include <linux/serial.h>
 #endif
 #endif
+/* Android is missing tcdrain, so use ioctl version instead */
+#ifdef __ANDROID__
+#define tcdrain(x) ioctl(x, TCSBRK, 1)
+#endif
 
 int ToBaudConstant(int baudRate);
 int ToDataBitsConstant(int dataBits);
