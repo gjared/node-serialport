@@ -37,6 +37,19 @@
             }
           }
         ],
+        ['OS=="android"',
+          {
+            'sources': [
+              'src/serialport_unix.cpp',
+              'src/serialport_poller.cpp',
+            ],
+	    'link_settings': {
+	      'libraries': [
+	        '-lstlport_static'
+	      ]
+	    }
+          }
+        ],
         ['OS!="win"',
           {
             'sources': [
